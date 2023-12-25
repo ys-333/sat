@@ -1,3 +1,4 @@
+import { useState } from 'react'
 import {
   Table,
   TableBody,
@@ -8,7 +9,8 @@ import {
   Paper,
 } from '@mui/material'
 
-const TableModel = ({ data, rank }) => {
+const TableModel = ({ data, rank, isUpdate = false, changeHandler }) => {
+  // const [data, setIsEdit] = useState(false)
   return (
     <TableContainer
       component={Paper}
@@ -25,12 +27,13 @@ const TableModel = ({ data, rank }) => {
             <TableCell>Pincode</TableCell>
             <TableCell>SAT Score</TableCell>
             <TableCell>Passed</TableCell>
+            {isUpdate && <TableCell>Update</TableCell>}
           </TableRow>
         </TableHead>
         <TableBody>
           {data.map((row, index) => (
             <TableRow key={index}>
-              <TableCell>{rank}</TableCell>
+              <TableCell>{isUpdate ? index + 1 : rank}</TableCell>
               <TableCell>{row.name}</TableCell>
               <TableCell>{row.address}</TableCell>
               <TableCell>{row.city}</TableCell>
@@ -38,6 +41,14 @@ const TableModel = ({ data, rank }) => {
               <TableCell>{row.pincode}</TableCell>
               <TableCell>{row.satScore}</TableCell>
               <TableCell>{row.passed ? 'Yes' : 'No'}</TableCell>
+              {isUpdate && (
+                <TableCell
+                  onClick={() => changeHandler(row)}
+                  sx={{ cursor: 'pointer' }}
+                >
+                  Edit
+                </TableCell>
+              )}
             </TableRow>
           ))}
         </TableBody>
