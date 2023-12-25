@@ -92,6 +92,22 @@ const updateUser = async (req, res) => {
     console.log(tempUser)
     const user = await User.find({ name: tempUser.name })
 
+    if (!user) {
+      return res.status(404).send({
+        success: false,
+        message: 'User not foud',
+        data: user,
+      })
+    }
+
+    let satScore = parseFloat(tempUser.satScore)
+
+    if (satScore > 30) {
+      tempUser.passed = true
+    } else tempUser.passed = false
+
+    console.log(tempUser, tempUser.satScore)
+
     const updatedUser = await User.findByIdAndUpdate(
       { _id: user[0]._id },
       tempUser,
@@ -114,7 +130,7 @@ const updateUser = async (req, res) => {
     })
   } catch (err) {
     res.status(500).send({
-      success: true,
+      success: false,
       message: 'Something went wrong!!',
       data: err,
     })
