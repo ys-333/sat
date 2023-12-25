@@ -9,11 +9,11 @@ const {
 } = require('../controllers/User')
 
 // create user data
-Router.post('/input_data', inputDataValidator, createData)
+Router.post('/insert_data', inputDataValidator, createData)
 // get all data
 Router.get('/get_data', getAllData)
 // getRank
-Router.get('/get_rank', getRank)
+Router.post('/get_rank', getRank)
 // update user
 Router.patch('/update_data', updateUser)
 // delete user

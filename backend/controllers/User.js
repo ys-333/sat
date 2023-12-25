@@ -57,7 +57,7 @@ const getRank = async (req, res) => {
     const { name } = req.body
     const users = await User.find()
     // sort the user
-    users.sort((a, b) => a.satScore - b.satScore)
+    users.sort((a, b) => b.satScore - a.satScore)
 
     let rank = -1
 
@@ -133,12 +133,12 @@ const deleteUser = async (req, res) => {
 
     const response = await User.findByIdAndDelete({ _id: user[0]._id })
 
-    const users = await User.find()
+    // const users = await User.find()
 
     return res.status(200).send({
       success: true,
       message: 'User succesfully deleted',
-      data: users,
+      data: response,
     })
   } catch (err) {
     return res
