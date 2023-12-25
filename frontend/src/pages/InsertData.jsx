@@ -1,9 +1,6 @@
 import React, { useState } from 'react'
 import { TextField, Grid, Button, FormControl } from '@mui/material'
 
-import { ToastContainer, toast } from 'react-toastify'
-import 'react-toastify/dist/ReactToastify.css'
-
 const InsertData = () => {
   const notify = () => toast('Data saved successfully')
 
@@ -53,13 +50,16 @@ const InsertData = () => {
 
       setLoading(true)
 
-      const response = await fetch('http://localhost:3000/user/insert_data', {
-        method: 'POST',
-        body: JSON.stringify(formData),
-        headers: {
-          'Content-Type': 'application/json',
+      const response = await fetch(
+        'https://backend-nt3s.onrender.com/user/insert_data',
+        {
+          method: 'POST',
+          body: JSON.stringify(formData),
+          headers: {
+            'Content-Type': 'application/json',
+          },
         },
-      })
+      )
 
       const data = await response.json()
 

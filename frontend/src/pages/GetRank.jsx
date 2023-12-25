@@ -13,13 +13,16 @@ const GetRank = () => {
 
     if (name.trim() === '') setError(true)
     else {
-      const response = await fetch('http://localhost:3000/user/get_rank', {
-        method: 'POST',
-        body: JSON.stringify({ name: name }),
-        headers: {
-          'Content-Type': 'application/json',
+      const response = await fetch(
+        'https://backend-nt3s.onrender.com/user/get_rank',
+        {
+          method: 'POST',
+          body: JSON.stringify({ name: name }),
+          headers: {
+            'Content-Type': 'application/json',
+          },
         },
-      })
+      )
       const userData = await response.json()
 
       if (userData.success) {

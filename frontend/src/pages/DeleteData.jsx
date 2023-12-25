@@ -13,13 +13,16 @@ const DeleteData = () => {
 
     if (name.trim() === '') setError(true)
     else {
-      const response = await fetch('http://localhost:3000/user/delete_user', {
-        method: 'DELETE',
-        body: JSON.stringify({ name: name }),
-        headers: {
-          'Content-Type': 'application/json',
+      const response = await fetch(
+        'https://backend-nt3s.onrender.com/user/delete_user',
+        {
+          method: 'DELETE',
+          body: JSON.stringify({ name: name }),
+          headers: {
+            'Content-Type': 'application/json',
+          },
         },
-      })
+      )
       const userData = await response.json()
 
       if (userData.success) {

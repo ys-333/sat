@@ -54,13 +54,16 @@ const Form = ({ data }) => {
     if (!Object.values(newErrors).some((error) => error)) {
       setLoading(true)
 
-      const response = await fetch('http://localhost:3000/user/update_data', {
-        method: 'PATCH',
-        body: JSON.stringify(formData),
-        headers: {
-          'Content-Type': 'application/json',
+      const response = await fetch(
+        'https://backend-nt3s.onrender.com/user/update_data',
+        {
+          method: 'PATCH',
+          body: JSON.stringify(formData),
+          headers: {
+            'Content-Type': 'application/json',
+          },
         },
-      })
+      )
 
       const data = await response.json()
 

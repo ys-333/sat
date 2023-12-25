@@ -13,9 +13,12 @@ const ViewData = () => {
   const [data, setData] = useState([])
 
   async function fetchData() {
-    const response = await fetch('http://localhost:3000/user/get_data', {
-      method: 'GET',
-    })
+    const response = await fetch(
+      'https://backend-nt3s.onrender.com/user/get_data',
+      {
+        method: 'GET',
+      },
+    )
     const userData = await response.json()
 
     if (userData.success) {
