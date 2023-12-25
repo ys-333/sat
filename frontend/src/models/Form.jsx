@@ -42,14 +42,16 @@ const Form = ({ data }) => {
       city: formData.city === '',
       country: formData.country === '',
       pincode: formData.pincode === '',
-      satScore: formData.satScore === '' || isNaN(formData.satScore),
+      satScore:
+        formData.satScore === '' ||
+        isNaN(formData.satScore) ||
+        formData.satScore < 0 ||
+        formData.satScore > 100,
     }
 
     setErrors(newErrors)
 
     if (!Object.values(newErrors).some((error) => error)) {
-      // Perform form submission logic here
-
       setLoading(true)
 
       const response = await fetch('http://localhost:3000/user/update_data', {
