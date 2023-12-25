@@ -22,3 +22,6 @@ Follow the instructions below to get started with the project on your local mach
 
 ```bash
 git clone https://github.com/ys-333/sat.git
+
+<hr>
+
