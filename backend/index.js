@@ -25,7 +25,9 @@ app.use('/user', userRoutes)
 
 /********************************/
 
-const PORT = process.env.PORT
+// console.log(process.argv)
+
+const PORT = process.argv[2] || 3000
 app.listen(PORT, () => {
   console.log(`We are live on ${PORT}`)
 })
